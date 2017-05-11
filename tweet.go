@@ -6,8 +6,9 @@ import (
 )
 
 func (b *Bot) startTweeting() {
-    ticker := time.NewTicker(30 * time.Minute)
+    b.postNewTweet()
 
+    ticker := time.NewTicker(30 * time.Minute)
     for {
         select {
         case <-ticker.C:
@@ -29,7 +30,7 @@ func (b *Bot) postNewTweet() {
         b.log.Println("Error fetching last tweet:", err)
         return
     }
-    lastTime, err := time.Parse(time.UnixDate, lastTweet[0].CreatedAt)
+    lastTime, err := time.Parse(time.ANSIC, lastTweet[0].CreatedAt)
     if err != nil {
         b.log.Println("Error formatting time:", err)
         return
