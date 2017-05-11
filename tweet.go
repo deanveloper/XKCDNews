@@ -30,7 +30,7 @@ func (b *Bot) postNewTweet() {
         b.log.Println("Error fetching last tweet:", err)
         return
     }
-    lastTime, err := time.Parse(time.ANSIC, lastTweet[0].CreatedAt)
+    lastTime, err := time.Parse(time.RubyDate, lastTweet[0].CreatedAt)
     if err != nil {
         b.log.Println("Error formatting time:", err)
         return
