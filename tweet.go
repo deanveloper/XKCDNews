@@ -67,6 +67,7 @@ func (b *Bot) postNewTweet() {
     }
 
     if bestTweetRating > 0 {
+
         params := &twitter.StatusUpdateParams{
             TrimUser: twitter.Bool(true),
         }

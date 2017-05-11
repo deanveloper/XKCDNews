@@ -70,8 +70,11 @@ func Substitute(s string) (string, int) {
     replaced := 0
     s1 := s
     for _, entry := range subs {
+        old := s1
         s1 = strings.Replace(s1, entry[0], entry[1], -1)
-        replaced++
+        if s1 != old {
+            replaced++
+        }
     }
 
     return s1, replaced
