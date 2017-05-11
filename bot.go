@@ -10,7 +10,7 @@ import (
 )
 
 type Bot struct {
-    done   <-chan bool
+    done   chan bool
     myId   int64
     client *twitter.Client
     log    *log.Logger
@@ -34,7 +34,7 @@ func (b *Bot) Start() {
     }
     b.log.Println("API Keys loaded")
 
-    config := &oauth1.NewConfig("iscYDnN0k5thQJUlGi0BLkQDl", string(consumer))
+    config := oauth1.NewConfig("iscYDnN0k5thQJUlGi0BLkQDl", string(consumer))
     token := oauth1.NewToken("862666402515255297-rFZpHgQX21sdMUXHKUhnVsN43qUNsXx", string(access))
     httpClient := config.Client(oauth1.NoContext, token)
 
