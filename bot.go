@@ -22,6 +22,7 @@ func New(log *log.Logger) *Bot {
 }
 
 func (b *Bot) Start() {
+    b.log.Println("Starting XKCDNews!")
     consumer, err := ioutil.ReadFile(path.Join(os.Getenv("HOME"), "XKCDNEWS_CONSUMER_SECRET"))
     if err != nil {
         b.log.Println("Error loading consumer secret: ", err)
@@ -32,6 +33,7 @@ func (b *Bot) Start() {
         b.log.Println("Error loading access secret: ", err)
         return
     }
+    b.log.Println("API Keys loaded")
 
     config := &oauth1.NewConfig("iscYDnN0k5thQJUlGi0BLkQDl", string(consumer))
     token := oauth1.NewToken("862666402515255297-rFZpHgQX21sdMUXHKUhnVsN43qUNsXx", string(access))
