@@ -1,7 +1,6 @@
 package xkcdnews
 
 import (
-    "context"
     "github.com/dghubble/go-twitter/twitter"
     "github.com/dghubble/oauth1"
     "io/ioutil"
@@ -37,7 +36,7 @@ func (b *Bot) Start() {
 
     config := &oauth1.NewConfig("iscYDnN0k5thQJUlGi0BLkQDl", string(consumer))
     token := oauth1.NewToken("862666402515255297-rFZpHgQX21sdMUXHKUhnVsN43qUNsXx", string(access))
-    httpClient := config.Client(context.TODO(), token)
+    httpClient := config.Client(oauth1.NoContext, token)
 
     b.client = twitter.NewClient(httpClient)
 
