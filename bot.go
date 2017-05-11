@@ -22,12 +22,12 @@ func New(log *log.Logger) *Bot {
 
 func (b *Bot) Start() {
     b.log.Println("Starting XKCDNews!")
-    consumer, err := ioutil.ReadFile(path.Join(os.Getenv("HOME"), "XKCDNEWS_CONSUMER_SECRET"))
+    consumer, err := ioutil.ReadFile(path.Join(os.Getenv("HOME"), "XKCDNEWS", "CONSUMER_SECRET"))
     if err != nil {
         b.log.Println("Error loading consumer secret: ", err)
         return
     }
-    access, err := ioutil.ReadFile(path.Join(os.Getenv("HOME"), "XKCDNEWS_ACCESS_SECRET"))
+    access, err := ioutil.ReadFile(path.Join(os.Getenv("HOME"), "XKCDNEWS", "ACCESS_SECRET"))
     if err != nil {
         b.log.Println("Error loading access secret: ", err)
         return
