@@ -8,10 +8,10 @@ import (
 // Starts the timer to continuously tweet
 func (b *Bot) startTweeting() {
 	for {
-		tryAgain := time.After(b.postNewTweet())
+		tryAgain := time.After(b.tryPostNewTweet())
 		select {
 		case <-tryAgain:
-			b.tryPostNewTweet()
+			continue
 		case <-b.done:
 			tryAgain = nil
 			return
