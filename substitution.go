@@ -68,7 +68,7 @@ var subs = [][2]string{
 	{"you won't believe", "i'm really sad about"},
 }
 var URL_PATTERN = regexp.MustCompile(`https?://[A-Za-z0-9\-_]+\.[A-Za-z0-9\-_:%&;?#/.=]+`)
-var MULTIPLE_SPACES = regexp.MustCompile(`\w{2,}`)
+var MULTIPLE_SPACES = regexp.MustCompile(`\s{2,}`)
 
 func Substitute(s string) (string, int) {
 	replaced := 0
