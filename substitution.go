@@ -1,6 +1,9 @@
 package xkcdnews
 
-import "strings"
+import (
+	"fmt"
+	"regexp"
+)
 
 var subs = [][2]string{
 	// Substitutions 1 - https://xkcd.com/1288/
@@ -17,7 +20,7 @@ var subs = [][2]string{
 	{"election", "eating contest"},
 	{"congressional leaders", "river spirits"},
 	{"homeland security", "homestar runner"}, // i miss this site
-	{"could not be reacehd for comment", "is guilty and everyone knows it"},
+	{"could not be reached for comment", "is guilty and everyone knows it"},
 	// substitutions 2 - https://xkcd.com/1625/
 	{"debate", "dance-off"},
 	{"self driving", "uncontrollably swerving"},
@@ -70,7 +73,8 @@ func Substitute(s string) (string, int) {
 	s1 := s
 	for _, entry := range subs {
 		old := s1
-		s1 = strings.Replace(s1, entry[0], entry[1], -1)
+		r := regexp.MustCompile(fmt.Sprintf(`\b%s\b`,entry[0]))
+		s1 = r.ReplaceAllLiteralString(s1, entry[1])
 		if s1 != old {
 			replaced++
 		}
