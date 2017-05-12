@@ -37,7 +37,6 @@ var subs = [][2]string{
 	{"minutes", "!m!inu!tes!"}, // minutes -> weird thing
 	{"years", "minutes"},       // years -> minutes
 	{"!m!inu!tes!", "years"},   // weird thing -> years (these three steps are required!)
-	{"years", "!years!"},
 	{"no indication", "lots of signs"},
 	{"urged restraint by", "drunkenly egged on"},
 	{"horsepower", "tons of horsemeat"},
