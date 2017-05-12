@@ -45,6 +45,8 @@ func (b *Bot) tryPostNewTweet() time.Duration {
 		return 5 * time.Hour
 	}
 
+	b.log.Println("Last tweet", lastTime.Format(time.RubyDate))
+
 	// if it hasn't been an hour since our last tweet, retry when the hour is up
 	if lastTime.Add(time.Hour).After(time.Now()) {
 		return time.Now().Sub(lastTime) + time.Minute
