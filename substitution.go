@@ -67,6 +67,7 @@ var subs = [][2]string{
 	{"scientists", "channing tatum and his friends"},
 	{"you won't believe", "i'm really sad about"},
 }
+var URL_PATTERN = regexp.MustCompile(`\b(https?://(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?://(?:www\.|(?!www))[a-zA-Z0-9]\.[^\s]{2,})\b`)
 
 func Substitute(s string) (string, int) {
 	replaced := 0
@@ -78,6 +79,10 @@ func Substitute(s string) (string, int) {
 		if s1 != old {
 			replaced++
 		}
+	}
+
+	if replaced > 0 {
+		s1 = URL_PATTERN.ReplaceAllLiteralString(s1, "")
 	}
 
 	return s1, replaced
