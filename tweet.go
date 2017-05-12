@@ -49,7 +49,9 @@ func (b *Bot) tryPostNewTweet() time.Duration {
 
 	// if it hasn't been an hour since our last tweet, retry when the hour is up
 	if lastTime.Add(time.Hour).After(time.Now()) {
-		return time.Now().Sub(lastTime) + time.Minute
+		untilPost := time.Now().Sub(lastTime) + time.Minute
+		b.log.Println("It hasn't been an hour yet! Time until post:",untilPost)
+		return untilPost
 	}
 
 	return b.postNewTweet()
